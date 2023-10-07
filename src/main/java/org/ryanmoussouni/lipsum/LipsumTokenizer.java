@@ -1,15 +1,22 @@
 package org.ryanmoussouni.lipsum;
 
-import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 
 public class LipsumTokenizer implements Tokenizer {
 
-    public static final String CHAPTER_FROM_CICERO_BOOK = "resources/static/deFinibusBonorumetMalorumS1.10.32.txt";
-    private final File lipsumFile;
+    public static final String PATH_TO_CHAPTER_FROM_CICERO_BOOK = "resources/static/deFinibusBonorumetMalorumS1.10.32.txt";
+    private final FileReader lipsumFile;
 
-    public LipsumTokenizer() {
-        lipsumFile = new File(CHAPTER_FROM_CICERO_BOOK);
+    public LipsumTokenizer() throws TokenizationException {
+        try {
+            lipsumFile = new FileReader(PATH_TO_CHAPTER_FROM_CICERO_BOOK);
+        } catch (FileNotFoundException fne) {
+            var message = "Could not set up the tokenizer: could not load the data source.";
+            throw new TokenizationException(message, fne);
+        }
     }
 
     @Override
