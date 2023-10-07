@@ -3,5 +3,5 @@ package org.ryanmoussouni.lipsum;
 import java.util.Set;
 
 public interface VocabularySource {
-    Set<String> getVocabulary();
+    Set<String> getVocabulary() throws VocabularyCreationException;
 }
