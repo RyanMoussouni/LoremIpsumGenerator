@@ -11,7 +11,7 @@ import java.util.List;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-class LipsumTokenizerTest {
+class LipsumWordsSupplierTest {
 
     @Test
     void tokenize_singleSentence_returnsAllTokensInOrder() throws IOException, TokenizationException {

@@ -3,7 +3,7 @@ package org.ryanmoussouni.lipsum;
 import org.junit.jupiter.api.*;
 
 @Tag("Integration")
-class LipsumTokenizerIntegrationTest {
+class LipsumWordsSupplierIntegrationTest {
 
     private LipsumWordsSupplier tokenizer;
 
