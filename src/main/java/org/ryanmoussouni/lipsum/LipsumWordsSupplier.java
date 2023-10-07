@@ -1,5 +1,7 @@
 package org.ryanmoussouni.lipsum;
 
+import org.ryanmoussouni.lipsum.ErrorHandling.TokenizationException;
+import org.ryanmoussouni.lipsum.ErrorHandling.VocabularyCreationException;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;

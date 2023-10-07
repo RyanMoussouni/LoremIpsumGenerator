@@ -1,6 +1,7 @@
 package org.ryanmoussouni.lipsum;
 
 import org.junit.jupiter.api.*;
+import org.ryanmoussouni.lipsum.ErrorHandling.TokenizationException;
 
 @Tag("Integration")
 class LipsumWordsSupplierIntegrationTest {

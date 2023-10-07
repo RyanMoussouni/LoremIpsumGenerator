@@ -1,4 +1,4 @@
-package org.ryanmoussouni.lipsum;
+package org.ryanmoussouni.lipsum.ErrorHandling;
 
 public class TokenizationException extends Exception {
     public TokenizationException(String message, Throwable cause) {

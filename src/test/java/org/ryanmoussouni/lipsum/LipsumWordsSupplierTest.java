@@ -2,6 +2,7 @@ package org.ryanmoussouni.lipsum;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.ryanmoussouni.lipsum.ErrorHandling.TokenizationException;
 
 import java.io.IOException;
 import java.io.InputStream;
