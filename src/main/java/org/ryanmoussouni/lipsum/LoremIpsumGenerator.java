@@ -13,7 +13,7 @@ public class LoremIpsumGenerator implements TextFactory {
     private VocabularySource loremIpsumWordsSupplier;
 
     @Override
-    public String create(TextParameters params) {
+    public String create(TextParameters params) throws TextCreationException {
         try {
             var vocabulary = loremIpsumWordsSupplier.getVocabulary();
             var stringBuilder = new StringBuilder();
@@ -23,6 +23,8 @@ public class LoremIpsumGenerator implements TextFactory {
             }
         } catch (VocabularyCreationException e) {
             e.printStackTrace();
+            var message = "Could not create the text: the vocabulary could not be created.";
+            throw new TextCreationException(message, e);
         }
         return "";
     }
