@@ -10,6 +10,8 @@ import java.util.Set;
 public class LoremIpsumGenerator implements TextFactory {
     public static final String SEMICOLON = ";";
     public static final String COMMA = ",";
+    public static final String DOT = ".";
+    public static final String SPACE = " ";
     private VocabularySource loremIpsumWordsSupplier;
 
     @Override
@@ -21,12 +23,12 @@ public class LoremIpsumGenerator implements TextFactory {
                 var generatedSentence = createSentence(params, vocabulary);
                 stringBuilder.append(generatedSentence);
             }
+            return String.join(DOT, stringBuilder);
         } catch (VocabularyCreationException e) {
             e.printStackTrace();
             var message = "Could not create the text: the vocabulary could not be created.";
             throw new TextCreationException(message, e);
         }
-        return "";
     }
 
     private String createSentence(TextParameters params, Set<String> vocabulary) {
@@ -36,7 +38,7 @@ public class LoremIpsumGenerator implements TextFactory {
                     : pickRandomWordFromVocabulary(vocabulary);
             stringBuilder.append(nextElement);
         }
-        return stringBuilder.toString();
+        return String.join(SPACE, stringBuilder);
     }
 
     private boolean shouldBePunctuationCharacter(TextParameters params) {
