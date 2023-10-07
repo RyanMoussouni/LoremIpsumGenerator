@@ -9,7 +9,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Component
 public class LipsumWordsSupplier implements Tokenizer, VocabularySource {
 
     public static final String PATH_TO_CHAPTER_FROM_CICERO_BOOK = "deFinibusBonorumetMalorumS1.10.32.txt";
