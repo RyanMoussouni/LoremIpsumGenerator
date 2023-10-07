@@ -16,6 +16,15 @@ class LipsumTokenizerIntegrationTest {
         }
     }
 
+    @Test
+    void tokenize_doesNotThrow() {
+        try {
+            tokenizer.tokenize();
+        } catch (TokenizationException te) {
+            Assertions.fail("Tokenizer failure");
+        }
+    }
+
     @AfterEach
     void tearDown() {
         try {
