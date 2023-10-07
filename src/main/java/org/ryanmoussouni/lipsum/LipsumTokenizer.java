@@ -4,6 +4,7 @@ import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -32,20 +33,16 @@ public class LipsumTokenizer implements Tokenizer {
     @Override
     public List<String> tokenize() throws TokenizationException {
         try {
-            String rawText = Arrays.toString(lipsumFile.readAllBytes());
+            String rawText = new String(lipsumFile.readAllBytes(), StandardCharsets.US_ASCII);
             var rawTokens = rawText.split(" ");
             return Arrays.stream(rawTokens)
-                    .filter(tkn -> !LipsumTokenizer.isPunctuation(tkn))
+                    .map(tkn -> tkn.replaceAll("\\p{Punct}", ""))
                     .map(tkn -> tkn.toLowerCase(Locale.ROOT))
                     .collect(Collectors.toList());
         } catch (IOException ioe) {
             var message = "Could not tokenize: error while reading data from the data source.";
             throw new TokenizationException(message, ioe);
         }
-    }
-
-    private static boolean isPunctuation(String s) {
-        return s.matches("\\p{Punct}");
     }
 
     public void tearDown() throws TokenizationException {
