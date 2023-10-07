@@ -1,12 +1,9 @@
 package org.ryanmoussouni.lipsum;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.*;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class LipsumTokenizerTest {
+@Tag("Integration")
+class LipsumTokenizerIntegrationTest {
 
     private LipsumTokenizer tokenizer;
 
