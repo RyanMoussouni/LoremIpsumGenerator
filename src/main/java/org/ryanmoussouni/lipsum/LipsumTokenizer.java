@@ -14,6 +14,7 @@ public class LipsumTokenizer implements Tokenizer {
         try {
             lipsumFile = new FileReader(PATH_TO_CHAPTER_FROM_CICERO_BOOK);
         } catch (FileNotFoundException fne) {
+            fne.printStackTrace();
             var message = "Could not set up the tokenizer: could not load the data source.";
             throw new TokenizationException(message, fne);
         }
@@ -28,6 +29,7 @@ public class LipsumTokenizer implements Tokenizer {
         try {
             this.lipsumFile.close();
         } catch (IOException ioe) {
+            ioe.printStackTrace();
             var message = "Could not free the resources used by the tokenizer.";
             throw new TokenizationException(message, ioe);
         }
