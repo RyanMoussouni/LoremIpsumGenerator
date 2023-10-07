@@ -23,4 +23,13 @@ public class LipsumTokenizer implements Tokenizer {
     public List<String> tokenize() throws TokenizationException {
        return null;
     }
+
+    public void tearDown() throws TokenizationException {
+        try {
+            this.lipsumFile.close();
+        } catch (IOException ioe) {
+            var message = "Could not free the resources used by the tokenizer.";
+            throw new TokenizationException(message, ioe);
+        }
+    }
 }
