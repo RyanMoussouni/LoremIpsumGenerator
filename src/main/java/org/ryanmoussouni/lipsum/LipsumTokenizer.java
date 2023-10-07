@@ -22,6 +22,10 @@ public class LipsumTokenizer implements Tokenizer {
         }
     }
 
+    public LipsumTokenizer(InputStream lipsumFile) {
+        this.lipsumFile = lipsumFile;
+    }
+
     @Override
     public List<String> tokenize() throws TokenizationException {
        return null;
