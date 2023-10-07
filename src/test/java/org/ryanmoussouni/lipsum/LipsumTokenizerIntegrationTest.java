@@ -5,12 +5,12 @@ import org.junit.jupiter.api.*;
 @Tag("Integration")
 class LipsumTokenizerIntegrationTest {
 
-    private LipsumTokenizer tokenizer;
+    private LipsumWordsSupplier tokenizer;
 
     @BeforeEach
     void setUp() {
         try {
-            tokenizer = new LipsumTokenizer();
+            tokenizer = new LipsumWordsSupplier();
         } catch (TokenizationException te) {
             Assertions.fail("Could not instanciate the tokenizer");
         }

@@ -6,18 +6,16 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
-public class LipsumTokenizer implements Tokenizer {
+public class LipsumWordsSupplier implements Tokenizer, VocabularySource {
 
     public static final String PATH_TO_CHAPTER_FROM_CICERO_BOOK = "deFinibusBonorumetMalorumS1.10.32.txt";
     private final InputStream lipsumFile;
 
-    public LipsumTokenizer() throws TokenizationException {
+    public LipsumWordsSupplier() throws TokenizationException {
         try {
             ClassPathResource cpr = new ClassPathResource(PATH_TO_CHAPTER_FROM_CICERO_BOOK);
             lipsumFile = cpr.getInputStream();
@@ -28,7 +26,7 @@ public class LipsumTokenizer implements Tokenizer {
         }
     }
 
-    public LipsumTokenizer(InputStream lipsumFile) {
+    public LipsumWordsSupplier(InputStream lipsumFile) {
         this.lipsumFile = lipsumFile;
     }
 
