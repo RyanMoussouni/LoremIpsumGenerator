@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class Controller {
-    @RequestMapping(path="lipsum", method = RequestMethod.GET)
+    @RequestMapping(path = "lipsum", method = RequestMethod.GET)
     public ResponseEntity<String> handleTextGenerationRequest() {
         var body = "test";
         var status = HttpStatus.OK;
