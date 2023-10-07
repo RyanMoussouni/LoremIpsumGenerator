@@ -1,6 +1,7 @@
 package org.ryanmoussouni.lipsum;
 
 import lombok.AllArgsConstructor;
+import org.ryanmoussouni.lipsum.ErrorHandling.TextCreationException;
 import org.ryanmoussouni.lipsum.ErrorHandling.VocabularyCreationException;
 
 import java.util.Random;

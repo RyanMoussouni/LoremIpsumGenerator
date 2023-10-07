@@ -1,5 +1,6 @@
 package org.ryanmoussouni.lipsum;
 
+import org.ryanmoussouni.lipsum.ErrorHandling.TextCreationException;
 import org.springframework.stereotype.Component;
 
 @Component

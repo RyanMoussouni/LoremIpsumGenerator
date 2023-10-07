@@ -1,4 +1,4 @@
-package org.ryanmoussouni.lipsum;
+package org.ryanmoussouni.lipsum.ErrorHandling;
 
 import org.ryanmoussouni.lipsum.ErrorHandling.VocabularyCreationException;
 
