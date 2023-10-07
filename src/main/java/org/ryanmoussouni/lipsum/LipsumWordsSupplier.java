@@ -54,4 +54,15 @@ public class LipsumWordsSupplier implements Tokenizer, VocabularySource {
             throw new TokenizationException(message, ioe);
         }
     }
+
+    @Override
+    public Set<String> getVocabulary() throws VocabularyCreationException {
+        try {
+            var tokens = tokenize();
+            return new HashSet<>(tokens);
+        } catch (TokenizationException e) {
+            e.printStackTrace();
+            throw new VocabularyCreationException(e);
+        }
+    }
 }
