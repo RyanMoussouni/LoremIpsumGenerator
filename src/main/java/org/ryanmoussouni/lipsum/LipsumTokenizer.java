@@ -1,6 +1,7 @@
 package org.ryanmoussouni.lipsum;
 
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
+@Component
 public class LipsumTokenizer implements Tokenizer {
 
     public static final String PATH_TO_CHAPTER_FROM_CICERO_BOOK = "deFinibusBonorumetMalorumS1.10.32.txt";
