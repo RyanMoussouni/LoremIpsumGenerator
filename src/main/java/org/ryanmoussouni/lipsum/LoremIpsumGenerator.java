@@ -33,13 +33,13 @@ public class LoremIpsumGenerator implements TextFactory {
     }
 
     private String createSentence(TextParameters params, Set<String> vocabulary) {
-        var stringBuilder = new StringBuilder();
+        var joiner = new StringJoiner(SPACE);
         for (int i = 0; i < params.getSentenceSize(); i++) {
             String nextElement = shouldBePunctuationCharacter(params) ? pickCommaOrSemiColon(params)
                     : pickRandomWordFromVocabulary(vocabulary);
-            stringBuilder.append(nextElement);
+            joiner.add(nextElement);
         }
-        return String.join(SPACE, stringBuilder);
+        return joiner.toString();
     }
 
     private boolean shouldBePunctuationCharacter(TextParameters params) {
