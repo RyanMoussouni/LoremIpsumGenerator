@@ -6,7 +6,6 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -15,12 +14,13 @@ import java.util.stream.Collectors;
 public class LipsumWordsSupplier implements Tokenizer, VocabularySource {
 
     public static final String PATH_TO_CHAPTER_FROM_CICERO_BOOK = "deFinibusBonorumetMalorumS1.10.32.txt";
-    private final InputStream lipsumFile;
+    private final String rawText;
 
     public LipsumWordsSupplier() throws TokenizationException {
         try {
             ClassPathResource cpr = new ClassPathResource(PATH_TO_CHAPTER_FROM_CICERO_BOOK);
-            lipsumFile = cpr.getInputStream();
+            var lipsumFile = cpr.getInputStream();
+            rawText = new String(lipsumFile.readAllBytes(), StandardCharsets.US_ASCII);
         } catch (IOException fne) {
             fne.printStackTrace();
             var message = "Could not set up the tokenizer: could not load the data source.";
@@ -28,23 +28,17 @@ public class LipsumWordsSupplier implements Tokenizer, VocabularySource {
         }
     }
 
-    public LipsumWordsSupplier(InputStream lipsumFile) {
-        this.lipsumFile = lipsumFile;
+    public LipsumWordsSupplier(String rawTextSource) {
+        this.rawText = rawTextSource;
     }
 
     @Override
     public List<String> tokenize() throws TokenizationException {
-        try {
-            String rawText = new String(lipsumFile.readAllBytes(), StandardCharsets.US_ASCII);
-            var rawTokens = rawText.split(" ");
-            return Arrays.stream(rawTokens)
-                    .map(tkn -> tkn.replaceAll("\\p{Punct}", ""))
-                    .map(tkn -> tkn.toLowerCase(Locale.ROOT))
-                    .collect(Collectors.toList());
-        } catch (IOException ioe) {
-            var message = "Could not tokenize: error while reading data from the data source.";
-            throw new TokenizationException(message, ioe);
-        }
+        var rawTokens = rawText.split(" ");
+        return Arrays.stream(rawTokens)
+                .map(tkn -> tkn.replaceAll("\\p{Punct}", ""))
+                .map(tkn -> tkn.toLowerCase(Locale.ROOT))
+                .collect(Collectors.toList());
     }
 
     @Override

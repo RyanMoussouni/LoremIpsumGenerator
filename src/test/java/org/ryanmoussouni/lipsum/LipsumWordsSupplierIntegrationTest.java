@@ -8,21 +8,12 @@ class LipsumWordsSupplierIntegrationTest {
 
     private LipsumWordsSupplier tokenizer;
 
-    @BeforeEach
-    void setUp() {
+    @Test
+    void creation_doesNotThrow() {
         try {
             tokenizer = new LipsumWordsSupplier();
         } catch (TokenizationException te) {
             Assertions.fail("Could not instanciate the tokenizer");
-        }
-    }
-
-    @Test
-    void tokenize_doesNotThrow() {
-        try {
-            tokenizer.tokenize();
-        } catch (TokenizationException te) {
-            Assertions.fail("Tokenizer failure");
         }
     }
 }
