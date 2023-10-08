@@ -16,7 +16,7 @@ public class LoremIpsumGenerator implements TextFactory {
     public static final String DOT = ".";
     public static final String DOT_SPACE = ". ";
     public static final String SPACE = " ";
-    private VocabularySource loremIpsumWordsSupplier;
+    private final VocabularySource loremIpsumWordsSupplier;
 
     @Override
     public String create(TextParameters params) throws TextCreationException {
