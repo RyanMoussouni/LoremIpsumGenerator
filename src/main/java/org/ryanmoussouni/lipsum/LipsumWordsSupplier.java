@@ -47,16 +47,6 @@ public class LipsumWordsSupplier implements Tokenizer, VocabularySource {
         }
     }
 
-    public void tearDown() throws TokenizationException {
-        try {
-            this.lipsumFile.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-            var message = "Could not free the resources used by the tokenizer.";
-            throw new TokenizationException(message, ioe);
-        }
-    }
-
     @Override
     public Set<String> getVocabulary() throws VocabularyCreationException {
         try {

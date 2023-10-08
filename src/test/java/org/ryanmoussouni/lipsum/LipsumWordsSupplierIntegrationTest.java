@@ -25,13 +25,4 @@ class LipsumWordsSupplierIntegrationTest {
             Assertions.fail("Tokenizer failure");
         }
     }
-
-    @AfterEach
-    void tearDown() {
-        try {
-            tokenizer.tearDown();
-        } catch (TokenizationException e) {
-            Assertions.fail("Could not teardown the tokenizer");
-        }
-    }
 }
