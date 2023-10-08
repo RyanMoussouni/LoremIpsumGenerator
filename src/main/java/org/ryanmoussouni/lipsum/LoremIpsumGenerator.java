@@ -6,6 +6,7 @@ import org.ryanmoussouni.lipsum.ErrorHandling.VocabularyCreationException;
 
 import java.util.Random;
 import java.util.Set;
+import java.util.StringJoiner;
 
 @AllArgsConstructor
 public class LoremIpsumGenerator implements TextFactory {
@@ -19,12 +20,12 @@ public class LoremIpsumGenerator implements TextFactory {
     public String create(TextParameters params) throws TextCreationException {
         try {
             var vocabulary = loremIpsumWordsSupplier.getVocabulary();
-            var stringBuilder = new StringBuilder();
+            var stringJoiner = new StringJoiner(DOT);
             for (int i = 0; i < params.getSentenceCount(); i++) {
                 var generatedSentence = createSentence(params, vocabulary);
-                stringBuilder.append(generatedSentence);
+                stringJoiner.add(generatedSentence);
             }
-            return String.join(DOT, stringBuilder);
+            return stringJoiner.toString();
         } catch (VocabularyCreationException e) {
             e.printStackTrace();
             var message = "Could not create the text: the vocabulary could not be created.";
