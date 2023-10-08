@@ -3,6 +3,7 @@ package org.ryanmoussouni.lipsum;
 import lombok.AllArgsConstructor;
 import org.ryanmoussouni.lipsum.ErrorHandling.TextCreationException;
 import org.ryanmoussouni.lipsum.ErrorHandling.VocabularyCreationException;
+import org.springframework.util.StringUtils;
 
 import java.util.Random;
 import java.util.Set;
@@ -40,7 +41,10 @@ public class LoremIpsumGenerator implements TextFactory {
                     : pickRandomWordFromVocabulary(vocabulary);
             joiner.add(nextElement);
         }
-        return joiner.toString();
+        var rawSentence = joiner.toString();
+        var capitalizedSentence = StringUtils.capitalize(rawSentence);
+        return capitalizedSentence.replaceAll(" ,", ",")
+                .replaceAll(" ;", ";");
     }
 
     private boolean shouldBePunctuationCharacter(TextParameters params, int i) {
