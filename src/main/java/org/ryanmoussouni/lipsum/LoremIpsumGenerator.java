@@ -63,6 +63,7 @@ public class LoremIpsumGenerator implements TextFactory {
             if (i == randomIndex) {
                 return word;
             }
+            i++;
         }
         return vocabulary.stream()
                 .findAny()
