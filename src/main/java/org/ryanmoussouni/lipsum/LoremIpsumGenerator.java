@@ -3,6 +3,7 @@ package org.ryanmoussouni.lipsum;
 import lombok.AllArgsConstructor;
 import org.ryanmoussouni.lipsum.ErrorHandling.TextCreationException;
 import org.ryanmoussouni.lipsum.ErrorHandling.VocabularyCreationException;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import java.util.Random;
@@ -10,6 +11,7 @@ import java.util.Set;
 import java.util.StringJoiner;
 
 @AllArgsConstructor
+@Component
 public class LoremIpsumGenerator implements TextFactory {
     public static final String SEMICOLON = ";";
     public static final String COMMA = ",";
