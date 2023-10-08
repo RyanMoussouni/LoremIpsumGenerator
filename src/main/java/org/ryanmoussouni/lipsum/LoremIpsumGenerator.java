@@ -14,6 +14,7 @@ public class LoremIpsumGenerator implements TextFactory {
     public static final String SEMICOLON = ";";
     public static final String COMMA = ",";
     public static final String DOT = ".";
+    public static final String DOT_SPACE = ". ";
     public static final String SPACE = " ";
     private VocabularySource loremIpsumWordsSupplier;
 
@@ -21,12 +22,13 @@ public class LoremIpsumGenerator implements TextFactory {
     public String create(TextParameters params) throws TextCreationException {
         try {
             var vocabulary = loremIpsumWordsSupplier.getVocabulary();
-            var stringJoiner = new StringJoiner(DOT);
+            var stringJoiner = new StringJoiner(DOT_SPACE);
             for (int i = 0; i < params.getSentenceCount(); i++) {
                 var generatedSentence = createSentence(params, vocabulary);
                 stringJoiner.add(generatedSentence);
             }
-            return stringJoiner.toString();
+            var rawText = stringJoiner.toString();
+            return rawText + DOT;
         } catch (VocabularyCreationException e) {
             e.printStackTrace();
             var message = "Could not create the text: the vocabulary could not be created.";
